@@ -1,0 +1,93 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <modelVersion>4.0.0</modelVersion>
+  
+    <!-- Project Metadata -->
+    <groupId>com.example</groupId>
+    <artifactId>java-sonar-demo</artifactId>
+    <version>1.0.0</version>
+    <name>Java SonarQube Demo</name>
+
+    <properties>
+        <!-- Compiler Settings -->
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- SonarQube Properties -->
+            <!-- Update to your SonarQube URL --> 
+            <!-- Thi is require but could be passed through the pipeline or the sonar-project.properties
+            <sonar.host.url>http://localhost:9000</sonar.host.url>  
+            <sonar.projectKey>java_sonar_demo</sonar.projectKey>
+
+            Thi is require but could be passed through the sonar-project.properties
+            <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+            <sonar.language>java</sonar.language>
+            <sonar.sourceEncoding>UTF-8</sonar.sourceEncoding>
+            <sonar.java.binaries>target/classes</sonar.java.binaries>
+            <sonar.java.libraries>target/**/*.jar</sonar.java.libraries>
+        -->
+        
+          
+        <!-- JaCoCo Properties -->
+        <jacoco.version>0.8.10</jacoco.version>
+    </properties>
+
+    <build>
+        <plugins>
+        <!-- Compiler Plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.11.0</version>
+        </plugin>
+
+        <!-- JaCoCo Test Coverage -->
+        <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>${jacoco.version}</version>
+            <executions>
+                <!-- Attach agent to JVM during tests -->
+                <execution>
+                    <id>prepare-agent</id>
+                    <goals>
+                        <goal>prepare-agent</goal>
+                    </goals>
+                </execution>
+                <!-- Generate report after tests -->
+                <execution>
+                    <id>generate-report</id>
+                    <phase>test</phase>
+                    <goals>
+                        <goal>report</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </build>
+
+    <dependencies>
+        <!-- JUnit 5 for Testing -->
+        <!-- Option 2: Single Aggregator Dependency -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
+
+
+
+
+
+
+
+
+
+
+
+
